@@ -1,0 +1,27 @@
+# ======================
+# Frontend (React)
+# ======================
+frontend/node_modules/
+frontend/build/
+frontend/.cache/
+frontend/.env
+frontend/.env.*
+
+# If you use npm, keep package-lock.json and ignore yarn.lock
+frontend/yarn.lock
+
+# ======================
+# Backend (Python)
+# ======================
+backend/venv/
+backend/__pycache__/
+backend/.env
+backend/.env.*
+*.pyc
+
+# ======================
+# OS / Logs
+# ======================
+.DS_Store
+Thumbs.db
+*.log
