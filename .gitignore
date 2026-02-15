@@ -6,8 +6,10 @@ frontend/build/
 frontend/.cache/
 frontend/.env
 frontend/.env.*
+frontend/.DS_Store
 
-# If you use npm, keep package-lock.json and ignore yarn.lock
+# keep package-lock.json (IMPORTANT)
+# ignore yarn lock only if not using yarn
 frontend/yarn.lock
 
 # ======================
@@ -17,7 +19,16 @@ backend/venv/
 backend/__pycache__/
 backend/.env
 backend/.env.*
+backend/*.pyc
+backend/.DS_Store
+
+# ======================
+# Python global ignores
+# ======================
+__pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # ======================
 # OS / Logs
@@ -25,3 +36,10 @@ backend/.env.*
 .DS_Store
 Thumbs.db
 *.log
+
+# ======================
+# Build / misc
+# ======================
+build/
+dist/
+.cache/
