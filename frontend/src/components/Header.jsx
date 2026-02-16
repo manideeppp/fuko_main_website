@@ -1,11 +1,12 @@
-
-// import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect, useRef, useCallback } from "react";
 // import { Menu, X, Facebook, Instagram } from "lucide-react";
 // import { Button } from "./ui/button";
 // import { externalLinks } from "../utils/mockData";
 // import fukoLogo from "../assets/FUKO_LOGO_ORANGE_transparant.png";
 
 // const Header = () => {
+//   const headerRef = useRef(null);
+
 //   const [isScrolled, setIsScrolled] = useState(false);
 //   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -16,22 +17,33 @@
 //     return () => window.removeEventListener("scroll", handleScroll);
 //   }, []);
 
-//   const scrollToSection = (sectionId) => {
-//     const el = document.getElementById(sectionId);
+//   const getHeaderOffset = useCallback(() => {
+//     // ✅ always use the *real* header height
+//     const h = headerRef.current?.offsetHeight ?? 90;
+//     return h + 10; // small breathing space
+//   }, []);
 
-//     if (el) {
-//       const headerOffset = 90;
-//       const elementPosition = el.getBoundingClientRect().top;
-//       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+//   const scrollToSection = useCallback(
+//     (sectionId) => {
+//       const el = document.getElementById(sectionId);
+//       if (!el) return;
 
-//       window.scrollTo({
-//         top: offsetPosition,
-//         behavior: "smooth",
-//       });
-
+//       // close menu first (mobile)
 //       setIsMobileMenuOpen(false);
-//     }
-//   };
+
+//       // wait 1 frame so layout stabilizes (important!)
+//       requestAnimationFrame(() => {
+//         const offset = getHeaderOffset();
+//         const y = el.getBoundingClientRect().top + window.scrollY - offset;
+
+//         window.scrollTo({
+//           top: y,
+//           behavior: "smooth",
+//         });
+//       });
+//     },
+//     [getHeaderOffset]
+//   );
 
 //   const navItems = [
 //     { name: "Home", id: "home" },
@@ -42,8 +54,7 @@
 //   ];
 
 //   return (
-//     <header className="fixed top-0 left-0 right-0 z-50 reveal">
-//       {/* Transparent over carousel; background appears only after scroll */}
+//     <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50">
 //       <div
 //         className={`transition-all duration-500 ease-out ${
 //           isScrolled
@@ -53,7 +64,7 @@
 //       >
 //         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
 //           <div className="flex items-center justify-between py-4 sm:py-5">
-//             {/* Logo (bigger) */}
+//             {/* Logo */}
 //             <button
 //               type="button"
 //               onClick={() => scrollToSection("home")}
@@ -180,6 +191,7 @@
 
 // export default Header;
 
+
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Menu, X, Facebook, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
@@ -192,6 +204,20 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // ✅ keep CSS var updated with real header height (used by scroll-mt)
+  useEffect(() => {
+    const setHeaderOffsetVar = () => {
+      const h = headerRef.current?.offsetHeight ?? 90;
+      // add a tiny breathing space like you had (+10)
+      document.documentElement.style.setProperty("--header-offset", `${h + 10}px`);
+    };
+
+    setHeaderOffsetVar();
+    window.addEventListener("resize", setHeaderOffsetVar, { passive: true });
+
+    return () => window.removeEventListener("resize", setHeaderOffsetVar);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -199,33 +225,24 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getHeaderOffset = useCallback(() => {
-    // ✅ always use the *real* header height
-    const h = headerRef.current?.offsetHeight ?? 90;
-    return h + 10; // small breathing space
-  }, []);
+  const scrollToSection = useCallback((sectionId) => {
+    const el = document.getElementById(sectionId);
+    if (!el) return;
 
-  const scrollToSection = useCallback(
-    (sectionId) => {
-      const el = document.getElementById(sectionId);
-      if (!el) return;
+    setIsMobileMenuOpen(false);
 
-      // close menu first (mobile)
-      setIsMobileMenuOpen(false);
+    // ✅ allow the mobile menu to close first, then scroll
+    requestAnimationFrame(() => {
+      // ensure var is correct even if layout changed
+      const h = headerRef.current?.offsetHeight ?? 90;
+      document.documentElement.style.setProperty("--header-offset", `${h + 10}px`);
 
-      // wait 1 frame so layout stabilizes (important!)
-      requestAnimationFrame(() => {
-        const offset = getHeaderOffset();
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
-
-        window.scrollTo({
-          top: y,
-          behavior: "smooth",
-        });
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
-    },
-    [getHeaderOffset]
-  );
+    });
+  }, []);
 
   const navItems = [
     { name: "Home", id: "home" },
@@ -271,6 +288,7 @@ const Header = () => {
                   {item.name}
                 </button>
               ))}
+
               <button
                 onClick={() => scrollToSection("order")}
                 className="text-white/95 hover:text-white font-extrabold uppercase tracking-wide text-[14px] drop-shadow-[0_3px_12px_rgba(0,0,0,0.75)]"
