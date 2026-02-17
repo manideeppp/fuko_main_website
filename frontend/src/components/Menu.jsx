@@ -6,115 +6,182 @@
 // import { Flame, TrendingUp, FileText } from "lucide-react";
 // import { Card, CardContent } from "./ui/card";
 // import { Badge } from "./ui/badge";
+// import menuPdf from "../assets/Menu.pdf"; // ✅ correct import (case-sensitive)
 
 // const Menu = () => {
-//   const [selectedCategory, setSelectedCategory] = useState(menuCategories[0]?.id);
-//   const currentCategory = menuCategories.find((cat) => cat.id === selectedCategory);
+//   const [selectedCategory, setSelectedCategory] = useState(
+//     menuCategories[0]?.id
+//   );
+
+//   const currentCategory = menuCategories.find(
+//     (cat) => cat.id === selectedCategory
+//   );
 
 //   return (
-//     <section id="menu" className="py-10 md:py-12 bg-gradient-to-b from-black to-gray-900">
-//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+//     <section
+//       id="menu"
+//       className="pt-10 md:pt-12 pb-10 md:pb-12 bg-gradient-to-b from-black to-gray-900 flex items-center"
+//       style={{ minHeight: "calc(100vh - 110px)" }}
+//     >
+//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
 //         {/* Header */}
 //         <div className="text-center mb-6 md:mb-8">
 //           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">
 //             Our <span className="text-[#ff5722]">Menu</span>
 //           </h2>
+
 //           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
 //             Discover our fusion masterpieces — where Korean tradition meets global innovation
 //           </p>
 //         </div>
 
-//         {/* Tabs */}
+
+//         {/* Category Tabs */}
 //         <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-7">
 //           {menuCategories.map((category) => (
 //             <button
 //               key={category.id}
 //               onClick={() => setSelectedCategory(category.id)}
-//               className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-sm md:text-base ${
-//                 selectedCategory === category.id
-//                   ? "bg-[#ff5722] text-white shadow-lg shadow-[#ff5722]/50"
-//                   : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-//               }`}
+//               className={`
+//                 px-5 py-2.5
+//                 rounded-lg
+//                 font-medium
+//                 transition-all duration-300
+//                 transform hover:scale-105
+//                 text-sm md:text-base
+//                 ${
+//                   selectedCategory === category.id
+//                     ? "bg-[#ff5722] text-white shadow-lg shadow-[#ff5722]/50"
+//                     : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+//                 }
+//               `}
 //             >
 //               {category.name}
 //             </button>
 //           ))}
 //         </div>
 
+
 //         {currentCategory && (
 //           <>
-//             {/* Banner */}
+//             {/* Category Banner */}
 //             <div className="relative h-36 md:h-40 rounded-2xl overflow-hidden mb-6 group border border-white/10">
+              
 //               <img
 //                 src={`${currentCategory.image}?w=1400&q=80`}
 //                 alt={currentCategory.name}
 //                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
 //               />
+
 //               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex items-end">
 //                 <div className="p-5 md:p-6">
+                  
 //                   <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-1">
 //                     {currentCategory.name}
 //                   </h3>
+
 //                   <p className="text-gray-300 text-sm md:text-base">
 //                     {currentCategory.description}
 //                   </p>
+
 //                 </div>
 //               </div>
+
 //             </div>
 
-//             {/* Smaller cards */}
+
+//             {/* Menu Items */}
 //             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
 //               {currentCategory.items.slice(0, 3).map((item) => (
+
 //                 <Card
 //                   key={item.id}
-//                   className="bg-gray-800/50 border-gray-700 hover:border-[#ff5722] transition-all duration-300 hover:shadow-lg hover:shadow-[#ff5722]/20 group"
+//                   className="
+//                     bg-gray-800/50
+//                     border border-gray-700
+//                     hover:border-[#ff5722]
+//                     transition-all duration-300
+//                     hover:shadow-lg hover:shadow-[#ff5722]/20
+//                     group
+//                   "
 //                 >
+
 //                   <CardContent className="p-4">
+
+//                     {/* Item Header */}
 //                     <div className="flex justify-between items-start gap-3 mb-2">
+
 //                       <h4 className="text-lg font-semibold text-white group-hover:text-[#ff5722] transition-colors leading-snug">
 //                         {item.name}
 //                       </h4>
 
 //                       <div className="flex flex-col items-end gap-2">
+
 //                         {item.spicy && (
-//                           <Badge className="bg-red-500/20 text-red-400 border-red-500/50">
+//                           <Badge className="bg-red-500/20 text-red-400 border border-red-500/50">
 //                             <Flame size={14} className="mr-1" />
 //                             Spicy
 //                           </Badge>
 //                         )}
+
 //                         {item.popular && (
-//                           <Badge className="bg-[#ff5722]/20 text-[#ff5722] border-[#ff5722]/50">
+//                           <Badge className="bg-[#ff5722]/20 text-[#ff5722] border border-[#ff5722]/50">
 //                             <TrendingUp size={14} className="mr-1" />
 //                             Popular
 //                           </Badge>
 //                         )}
+
 //                       </div>
+
 //                     </div>
 
-//                     {/* ✅ tighter description */}
+
+//                     {/* Description */}
 //                     <p className="text-gray-400 text-sm leading-relaxed line-clamp-1">
 //                       {item.description}
 //                     </p>
 
-//                     {/* ✅ PRICE REMOVED */}
 //                   </CardContent>
+
 //                 </Card>
+
 //               ))}
+
 //             </div>
+
 //           </>
 //         )}
 
+
+//         {/* View Full Menu PDF Button */}
 //         <div className="text-center mt-6 md:mt-7">
+
 //           <a
-//             href="/menu.pdf"
+//             href={menuPdf}
 //             target="_blank"
 //             rel="noopener noreferrer"
-//             className="inline-flex items-center gap-2 bg-[#ff5722] hover:bg-[#ff7849] text-white px-7 py-3 rounded-lg font-semibold text-base md:text-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[#ff5722]/50"
+//             className="
+//               inline-flex items-center gap-2
+//               bg-[#ff5722]
+//               hover:bg-[#ff7849]
+//               text-white
+//               px-7 py-3
+//               rounded-lg
+//               font-semibold
+//               text-base md:text-lg
+//               transition-all duration-200
+//               hover:scale-105
+//               hover:shadow-lg hover:shadow-[#ff5722]/50
+//             "
 //           >
 //             <FileText size={18} />
 //             View Full Menu PDF
 //           </a>
+
 //         </div>
+
 //       </div>
 //     </section>
 //   );
@@ -122,28 +189,41 @@
 
 // export default Menu;
 
-import React, { useState } from "react";
+
+import React, { useMemo, useState } from "react";
 import { menuCategories } from "../utils/mockData";
 import { Flame, TrendingUp, FileText } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
+import menuPdf from "../assets/Menu.pdf";
 
 const Menu = () => {
-  const [selectedCategory, setSelectedCategory] = useState(menuCategories[0]?.id);
-  const currentCategory = menuCategories.find((cat) => cat.id === selectedCategory);
+  const [selectedCategory, setSelectedCategory] = useState(
+    menuCategories[0]?.id
+  );
+
+  const currentCategory = useMemo(
+    () => menuCategories.find((cat) => cat.id === selectedCategory),
+    [selectedCategory]
+  );
 
   return (
     <section
       id="menu"
-      className="pt-10 md:pt-12 pb-28 md:pb-32 bg-gradient-to-b from-black to-gray-900"
+      className="pt-10 md:pt-12 pb-10 md:pb-12 flex items-center"
+      style={{
+        minHeight: "calc(100vh - 110px)",
+        backgroundColor: "#071224", // ✅ full navy blue
+      }}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">
             Our <span className="text-[#ff5722]">Menu</span>
           </h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+
+          <p className="text-gray-300/80 text-base md:text-lg max-w-2xl mx-auto">
             Discover our fusion masterpieces — where Korean tradition meets global
             innovation
           </p>
@@ -155,11 +235,16 @@ const Menu = () => {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-sm md:text-base ${
-                selectedCategory === category.id
-                  ? "bg-[#ff5722] text-white shadow-lg shadow-[#ff5722]/50"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
+              className={`
+                px-5 py-2.5 rounded-lg font-medium
+                transition-all duration-300 transform hover:scale-105
+                text-sm md:text-base
+                ${
+                  selectedCategory === category.id
+                    ? "bg-[#ff5722] text-white shadow-lg shadow-[#ff5722]/40"
+                    : "bg-white/10 text-gray-200 hover:bg-white/15"
+                }
+              `}
             >
               {category.name}
             </button>
@@ -168,47 +253,60 @@ const Menu = () => {
 
         {currentCategory && (
           <>
-            {/* Banner */}
+            {/* Category Banner */}
             <div className="relative h-36 md:h-40 rounded-2xl overflow-hidden mb-6 group border border-white/10">
               <img
                 src={`${currentCategory.image}?w=1400&q=80`}
                 alt={currentCategory.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex items-end">
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-transparent flex items-end">
                 <div className="p-5 md:p-6">
                   <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-1">
                     {currentCategory.name}
                   </h3>
-                  <p className="text-gray-300 text-sm md:text-base">
+
+                  <p className="text-gray-200/80 text-sm md:text-base">
                     {currentCategory.description}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Items (smaller cards, no price) */}
+            {/* Menu Items */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {currentCategory.items.slice(0, 3).map((item) => (
                 <Card
                   key={item.id}
-                  className="bg-gray-800/50 border border-gray-700 hover:border-[#ff5722] transition-all duration-300 hover:shadow-lg hover:shadow-[#ff5722]/20 group"
+                  className="
+                    bg-white/5
+                    border border-white/10
+                    hover:border-[#ff5722]
+                    transition-all duration-300
+                    hover:shadow-lg hover:shadow-[#ff5722]/15
+                    group
+                    rounded-xl
+                  "
                 >
                   <CardContent className="p-4">
-                    <div className="flex justify-between items-start gap-3 mb-2">
+                    {/* Header row: name + badges */}
+                    <div className="flex items-start justify-between gap-3 mb-2">
                       <h4 className="text-lg font-semibold text-white group-hover:text-[#ff5722] transition-colors leading-snug">
                         {item.name}
                       </h4>
 
-                      <div className="flex flex-col items-end gap-2">
+                      {/* ✅ Spicy + Popular in ONE horizontal line */}
+                      <div className="flex items-center gap-2 flex-wrap justify-end">
                         {item.spicy && (
-                          <Badge className="bg-red-500/20 text-red-400 border border-red-500/50">
+                          <Badge className="bg-red-500/15 text-red-300 border border-red-500/40">
                             <Flame size={14} className="mr-1" />
                             Spicy
                           </Badge>
                         )}
+
                         {item.popular && (
-                          <Badge className="bg-[#ff5722]/20 text-[#ff5722] border border-[#ff5722]/50">
+                          <Badge className="bg-[#ff5722]/15 text-[#ff7849] border border-[#ff5722]/40">
                             <TrendingUp size={14} className="mr-1" />
                             Popular
                           </Badge>
@@ -216,7 +314,8 @@ const Menu = () => {
                       </div>
                     </div>
 
-                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-1">
+                    {/* ✅ Full multi-line description (no clamp) */}
+                    <p className="text-gray-200/70 text-sm leading-relaxed whitespace-normal break-words">
                       {item.description}
                     </p>
                   </CardContent>
@@ -226,13 +325,22 @@ const Menu = () => {
           </>
         )}
 
-        {/* PDF Button */}
+        {/* View Full Menu PDF Button */}
         <div className="text-center mt-6 md:mt-7">
           <a
-            href="/menu.pdf"
+            href={menuPdf}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#ff5722] hover:bg-[#ff7849] text-white px-7 py-3 rounded-lg font-semibold text-base md:text-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[#ff5722]/50"
+            className="
+              inline-flex items-center gap-2
+              bg-[#ff5722] hover:bg-[#ff7849]
+              text-white
+              px-7 py-3 rounded-lg
+              font-semibold text-base md:text-lg
+              transition-all duration-200
+              hover:scale-105
+              hover:shadow-lg hover:shadow-[#ff5722]/40
+            "
           >
             <FileText size={18} />
             View Full Menu PDF

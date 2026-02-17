@@ -1,176 +1,195 @@
-// Mock data for FUKO Restaurant
-
 export const menuCategories = [
   {
-    id: 1,
-    name: "Signature Fusion",
-    description: "Our chef's innovative Korean fusion creations",
-    image: "https://images.unsplash.com/photo-1539755530862-00f623c00f52",
+    id: "korean-cravings",
+    name: "Korean Cravings",
+    description: "Crispy street-food bites with bold Korean flavour.",
+    image:
+      "https://images.unsplash.com/photo-1604908554027-3f2a0c2f9b4d?auto=format&fit=crop&w=1600&q=80",
     items: [
       {
-        id: 101,
-        name: "Kimchi Carbonara Bowl",
-        description: "Creamy carbonara with fermented kimchi and crispy bacon",
-        price: "$16.99",
+        id: "corndog",
+        name: "Korean Corndog",
+        price: "£5.9",
+        description:
+          "Golden panko crunch. Sausage core. Garlic mustard, ketchup & K-chilli.",
+        spicy: false,
+        popular: true,
+      },
+      {
+        id: "dukk-gochi",
+        name: "Dukk-Gochi",
+        price: "£5.5",
+        description:
+          "Chewy rice cake skewers glazed in sweet chilli & sesame.",
         spicy: true,
-        popular: true
+        popular: true,
       },
       {
-        id: 102,
-        name: "Korean BBQ Tacos",
-        description: "Bulgogi beef in soft tortillas with gochujang mayo",
-        price: "$14.99",
-        popular: true
-      },
-      {
-        id: 103,
-        name: "Fusion Bibimbap",
-        description: "Traditional bibimbap with Mediterranean twist",
-        price: "$15.99"
-      }
-    ]
-  },
-  {
-    id: 2,
-    name: "Korean BBQ",
-    description: "Premium grilled meats with authentic marinades",
-    image: "https://images.unsplash.com/photo-1743612828586-aeb6e7037b99",
-    items: [
-      {
-        id: 201,
-        name: "Bulgogi Beef",
-        description: "Thinly sliced marinated beef, grilled to perfection",
-        price: "$18.99",
-        popular: true
-      },
-      {
-        id: 202,
-        name: "Spicy Pork BBQ",
-        description: "Korean-style spicy marinated pork shoulder",
-        price: "$17.99",
-        spicy: true
-      },
-      {
-        id: 203,
-        name: "Galbi Short Ribs",
-        description: "Premium beef short ribs with signature sauce",
-        price: "$24.99"
-      }
-    ]
-  },
-  {
-    id: 3,
-    name: "Signature Bowls",
-    description: "Hearty rice bowls packed with flavor",
-    image: "https://images.unsplash.com/photo-1661366394743-fe30fe478ef7",
-    items: [
-      {
-        id: 301,
-        name: "Classic Bibimbap",
-        description: "Mixed rice bowl with vegetables, egg, and gochujang",
-        price: "$13.99",
-        popular: true
-      },
-      {
-        id: 302,
-        name: "Spicy Chicken Bowl",
-        description: "Gochujang chicken with pickled vegetables",
-        price: "$14.99",
-        spicy: true
-      },
-      {
-        id: 303,
-        name: "Tofu Power Bowl",
-        description: "Crispy tofu with seasonal vegetables and sesame",
-        price: "$12.99"
-      }
-    ]
-  },
-  {
-    id: 4,
-    name: "Soups & Stews",
-    description: "Comforting Korean soups and hearty stews",
-    image: "https://images.unsplash.com/photo-1635363638580-c2809d049eee",
-    items: [
-      {
-        id: 401,
-        name: "Kimchi Jjigae",
-        description: "Spicy kimchi stew with pork and tofu",
-        price: "$13.99",
+        id: "kimchi-aranchini",
+        name: "Kimchi Aranchini",
+        price: "£5.9",
+        description:
+          "Crispy kimchi rice balls with molten mozzarella centre.",
         spicy: true,
-        popular: true
+        popular: false,
       },
       {
-        id: 402,
-        name: "Sundubu Jjigae",
-        description: "Soft tofu stew with seafood or beef",
-        price: "$14.99",
-        spicy: true
+        id: "kimchi-pancake",
+        name: "Kimchi Pancake",
+        price: "£6.9",
+        description:
+          "Savory kimchi pancake. Crisp edges, bold flavour.",
+        spicy: false,
+        popular: true,
       },
       {
-        id: 403,
-        name: "Galbitang",
-        description: "Beef short rib soup with radish and noodles",
-        price: "$16.99"
-      }
-    ]
+        id: "korean-dumplings",
+        name: "Korean Dumplings",
+        price: "£7.5",
+        description:
+          "Juicy kimchi dumplings. Fried or steamed perfection.",
+        spicy: true,
+        popular: true,
+      },
+    ],
   },
+
   {
-    id: 5,
-    name: "Appetizers",
-    description: "Start your meal with Korean favorites",
-    image: "https://images.unsplash.com/photo-1590301157890-4810ed352733",
+    id: "k-flavor-bowls",
+    name: "K-Flavor Bowls",
+    description: "Loaded bowls. Bold toppings. Your protein, your way.",
+    image:
+      "https://images.unsplash.com/photo-1606851091851-e8c8c0a99895?auto=format&fit=crop&w=1600&q=80",
     items: [
       {
-        id: 501,
-        name: "Kimchi Dumplings",
-        description: "Pan-fried dumplings stuffed with kimchi and pork",
-        price: "$8.99",
-        popular: true
+        id: "fuko-rice-bowl",
+        name: "FUKO Rice Bowl",
+        price: "£10.9",
+        description:
+          "Steamed rice, cheese, kimchi slaw, crispy onion & K-chilli.",
+        spicy: false,
+        popular: true,
       },
       {
-        id: 502,
-        name: "Korean Fried Chicken",
-        description: "Crispy chicken with sweet & spicy glaze",
-        price: "$11.99",
-        popular: true
+        id: "bulgogi-loaded-fries",
+        name: "Bulgogi Loaded Fries",
+        price: "£11.9",
+        description:
+          "Crispy fries stacked with cheese, slaw & bold Korean sauces.",
+        spicy: false,
+        popular: true,
       },
       {
-        id: 503,
-        name: "Japchae",
-        description: "Glass noodles stir-fried with vegetables",
-        price: "$9.99"
-      }
-    ]
+        id: "protein-note",
+        name: "Choose Your Protein",
+        price: "",
+        description:
+          "Beef bulgogi, spicy pork, spicy chicken, tofu, dumplings or K-fried.",
+        spicy: true,
+        popular: false,
+      },
+    ],
   },
+
   {
-    id: 6,
-    name: "Drinks & Desserts",
-    description: "Refreshing beverages and sweet endings",
-    image: "https://images.unsplash.com/photo-1498654896293-37aacf113fd9",
+    id: "korean-fried",
+    name: "Korean Fried",
+    description: "Ultra-crispy chicken with signature Korean sauces.",
+    image:
+      "https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=1600&q=80",
     items: [
       {
-        id: 601,
-        name: "Korean Iced Tea",
-        description: "Traditional barley tea served cold",
-        price: "$3.99"
+        id: "k-fried-boneless",
+        name: "K-Fried Boneless",
+        price: "£7.9",
+        description:
+          "Boneless crunch. Choose sweet chilli, soy garlic or cheesy snow.",
+        spicy: true,
+        popular: true,
       },
       {
-        id: 602,
-        name: "Yuzu Lemonade",
-        description: "Citrus-infused refreshing drink",
-        price: "$4.99"
+        id: "k-fried-wings",
+        name: "K-Fried Wings",
+        price: "£7.5+",
+        description:
+          "Signature crispy wings with bold Korean glaze options.",
+        spicy: true,
+        popular: true,
+      },
+    ],
+  },
+
+  {
+    id: "bulgogi-burgers",
+    name: "Bulgogi Burgers",
+    description: "Juicy burgers layered with Korean attitude.",
+    image:
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=80",
+    items: [
+      {
+        id: "k-fried-chicken-burger",
+        name: "K-Fried Chicken Burger",
+        price: "£8.9",
+        description:
+          "Crispy chicken, kimchi slaw & Korean burger sauce.",
+        spicy: true,
+        popular: true,
       },
       {
-        id: 603,
-        name: "Mochi Ice Cream",
-        description: "Assorted flavors of chewy rice cakes with ice cream",
-        price: "$6.99"
-      }
-    ]
-  }
+        id: "smashed-bulgogi-burger",
+        name: "Smashed Bulgogi Burger",
+        price: "£8.9",
+        description:
+          "Double smashed bulgogi beef. Cheese, fresh crunch, bold mayo.",
+        spicy: false,
+        popular: true,
+      },
+    ],
+  },
+
+  {
+    id: "tacos-baos",
+    name: "Tacos & Baos",
+    description: "Soft buns. Bold fillings. Big flavour hits.",
+    image:
+      "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1600&q=80",
+    items: [
+      {
+        id: "bulgogi-tacos",
+        name: "Bulgogi Tacos",
+        price: "£8",
+        description:
+          "Soft tacos loaded with bulgogi, slaw & Korean spice.",
+        spicy: true,
+        popular: true,
+      },
+      {
+        id: "fuko-baos",
+        name: "FUKO Baos",
+        price: "£8.5",
+        description:
+          "Fluffy bao buns packed with bold Korean fillings.",
+        spicy: true,
+        popular: true,
+      },
+      {
+        id: "tacos-protein-note",
+        name: "Choose Your Protein",
+        price: "",
+        description:
+          "Beef, pork, chicken, tofu or dumplings.",
+        spicy: true,
+        popular: false,
+      },
+    ],
+  },
 ];
 
+
+
+
+
+// Review section
 export const customerReviews = [
   {
     id: 1,
